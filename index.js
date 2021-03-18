@@ -164,19 +164,15 @@ animalsUl.addEventListener('click', function(event){
    
 }) 
 
-const updateForm = document.querySelector("form.update-form")
 
-updateForm.addEventListener('submit', function(event){
-     event.preventDefault()
 
-    //  const description = event.target.name.value
-    const oldDescription =  event.target.closest('p').innerText
-    
-  console.log(oldDescription)
+animalsUl.addEventListener('submit', function(event){
+    event.preventDefault()
+    const updateForm = document.querySelector("form.update-form")
+    const li =  event.target.closest('li')
+    const descriptionPtag = li.querySelector('p')
+    descriptionPtag.textContent = event.target[0].value
 
 })
 
 
-// listen on update button 
-// listening for submit
-// update p element that displays description
