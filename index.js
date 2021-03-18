@@ -137,4 +137,38 @@ newSightingForm.addEventListener('submit', function (event) {
 /***** End of Starter Code *****/
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
 
+// Deliverable 1 + 2 : Like an animal sighting + Delete an animal sighting
+// When a user clicks an animal sighting's like button, that animal sighting's likes should increase by 1.
+// When a user clicks an animal sighting's delete button, that animal sighting should be removed from the page. 
 
+
+const animalsUl = document.querySelector('ul#animals')
+
+animalsUl.addEventListener('click', function(event) {
+
+    if (event.target.matches('button.like-button')) {
+        const pLikesDisplay = event.target.previousElementSibling 
+        const likes = parseInt(pLikesDisplay.textContent) + 1
+        pLikesDisplay.textContent = `${likes} Likes`
+    } 
+    else if (event.target.matches('button.delete-button')) {
+        const li = event.target.closest('li')
+        li.remove()
+    } 
+    else if (event.target.matches('button.toggle-update-form-button')) {
+        const updateForm = event.target.nextElementSibling
+        if (updateForm.style.display === 'none') {
+            updateForm.style.display = 'block'
+        } else {
+            updateForm.style.display = 'none'
+        }
+    }
+})
+
+
+//BONUS: Update animal sighting description
+
+animalsUl.addEventListener('submit', function(event) {
+    event.preventDefault()
+    event.target.closest('li').querySelector('p').textContent = event.target.querySelector('input').value
+})
