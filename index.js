@@ -3,6 +3,31 @@ const header = document.querySelector("#header")
 // console.log("Here's your header:", header)
 
 
+const bigList = document.querySlector(`ul#animals`)
+
+const AniLikBtn = bigList.querySelector(`button.like-button`)
+
+AniLikBtn.addEventListener (`click`,function (event){
+    const plusLikes = bigList.querySelector('p.like-display')
+    plusLikes.textContent = `${ articleObject.likes++} Likes`
+})
+
+const bigList = document.querySlector(`ul#animals`)
+
+const AniLikBtn = biglist.querySelector(`button.delet-button`)
+
+AniLikBtn.addEventListener (`click`,function (event){
+const li = document.queryselctor(`li[data-id]`)
+li.remove
+})
+
+
+
+
+
+
+
+
 /***** Deliverable 2 *****/
 header.style.color = "green"
 
@@ -131,10 +156,25 @@ newSightingForm.addEventListener('submit', function (event) {
     renderAnimalSightingPost(newSightingObject)
     newSightingForm.reset()
 
+    const bigList = document.querySlector(`ul#animals`)
+
+    const AniLikBtn = bigList.querySelector(`button.like-button`)
+
+         AniLikBtn.addEventListener (`click`,function (event){
+             console.log(event.target)
+    const plusLikes = bigList.querySelector('p.like-display')
+          plusLikes.textContent = `${ articleObject.likes++} Likes`
+           })
+
+    const bigList = document.querySlector(`ul#animals`)
+
+    const AniLikBtn = biglist.querySelector(`button.delet-button`)
+
+    AniLikBtn.addEventListener (`click`,function (event){
+    const li = document.queryselctor(`li[data-id]`)
+    li.remove
+    })
+
+
 })
-
-
-/***** End of Starter Code *****/
-/************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
-
 

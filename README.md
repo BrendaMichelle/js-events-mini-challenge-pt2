@@ -1,3 +1,4 @@
+
 # JS Mini Challenge: Event Handling (PART 2)
 
 ## Instructions
@@ -38,6 +39,10 @@ There's a section in this Readme file for your notes on each deliverable. As you
 **YOUR NOTES**
 ```
 
+1. I am looking for a class button element - research with document.querySelector - like button
+2. The event I want is a click event
+3. I want javascript to add a Likes each time this event is triggered. 
+
 ```
 
 ## Deliverable 2: Delete an animal sighting
@@ -46,6 +51,9 @@ There's a section in this Readme file for your notes on each deliverable. As you
 
 **YOUR NOTES**
 ```
+1. I am looking for a class button element - research with document.querySelector - delete button
+2. The event I want is a click event
+3. I want javascript remove .remove()
 
 ```
 
@@ -56,6 +64,9 @@ There's a section in this Readme file for your notes on each deliverable. As you
 
 **YOUR NOTES**
 ```
+I am loooking for an element with the class form 
+the event I want is a submit event
+I want javascript to .toggle with a conditional statement
 
 ```
 
@@ -78,4 +89,3 @@ Some things to keep in mind:
 ```
 
 ```
-
