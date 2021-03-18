@@ -138,3 +138,45 @@ newSightingForm.addEventListener('submit', function (event) {
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
 
 
+
+const animalsUl = document.querySelector("#animals")
+animalsUl.addEventListener('click', function(event){
+    if(event.target.matches("button.like-button")){
+        const likesPtag = event.target.previousElementSibling
+        const likes = parseInt(likesPtag.textContent) + 1
+        likesPtag.textContent = `${likes} Likes`
+      
+    } 
+    else if (event.target.matches("button.delete-button")){
+        const sighting = event.target.closest('li')
+        sighting.remove()
+    } 
+    else if(event.target.matches("button.toggle-update-form-button")){
+        const sighting = event.target.nextElementSibling
+       
+       if (sighting.style.display === 'none'){
+           sighting.style.display = 'inline-block'
+       }  else { 
+           sighting.style.display = 'none' 
+           }
+    
+    }
+   
+}) 
+
+const updateForm = document.querySelector("form.update-form")
+
+updateForm.addEventListener('submit', function(event){
+     event.preventDefault()
+
+    //  const description = event.target.name.value
+    const oldDescription =  event.target.closest('p').innerText
+    
+  console.log(oldDescription)
+
+})
+
+
+// listen on update button 
+// listening for submit
+// update p element that displays description
