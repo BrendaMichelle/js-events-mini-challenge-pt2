@@ -102,7 +102,7 @@ header.addEventListener('click', function (event) {
 const button = document.querySelector('button.like-button')
 
 button.addEventListener('click', function () {
-    likes.textContent = `${traveler.likes++} Likes`
+    likes.textContent = `${++traveler.likes} Likes`
 })
 
 
@@ -148,21 +148,66 @@ newSightingForm.addEventListener('submit', function (event) {
 
 
 //can click on 'like' 'delete' and 'toggle update form' for each animal sighting post
-const animalsUl = document.querySelector('ul#animals')
+const animalsCollection = document.querySelector('ul#animals')
 
-animalsUl.addEventListener('click', function (event) {
-    console.log('clicked', event.target)
+animalsCollection.addEventListener('click', function (event) {
 
+    const li = event.target.closest('li')
+    
+    // before review
+    // if (event.target.matches('button.like-button')){
+    //     const likesPtag = event.target.previousElementSibling
+    //     const likes = parseInt(likesPtag.textContent) + 1
+    //     likesPtag.textContent = `${likes} Likes`
+    // }
+
+    //after review
     if (event.target.matches('button.like-button')){
-        const likesPtag = event.target.previousElementSibling
-        const likes = parseInt(likesPtag.textContent) + 1
-        likesPtag.textContent = `${likes} Likes`
+        const likesPtag = li.querySelector('p.likes-display')
+        const currlikes = parseInt(likesPtag.textContent) + 1
+        likesPtag.textContent = `${currlikes} Likes`
     }
-    else if (event.target.matches('button.delete-button')) {
-        const animals = event.target.closest('ul.animals')
-        animals.remove()
-    }
+
+    //before review
+    // else if (event.target.matches('button.delete-button')) {
+    //     const animals = event.target.closest('li')
+    //     animals.remove()
+    // }
     // getting error: index.js:163 Uncaught TypeError: Cannot read property 'remove' of null
     // at HTMLUListElement.<anonymous> (index.js:163)
     // when trying to click on 'delete' button. not sure what is wrong with the code.
+
+    //after review
+    else if(event.target.className === 'delete-button') {
+        li.remove()
+    }
+    else if(event.target.matches('button.toggle-update-form-button')) {
+        
+
+         const form = li.querySelector('form')
+
+        // if(form.style.display === 'block') {
+        //     form.style.display
+        // }
+        // else {
+        //     form.style.display = 'block'
+        // }
+
+        form.style.display = form.style.display === 'block' ? 'none' : 'block'
+
+    }
+    
+})
+
+//after review
+animalsCollection.addEventListener('submit', function(event) {
+    if (event.target.matches('form.update-form')) {
+        event.preventDefault()
+        
+        const descriptionInput = event.target[0].value
+        const li = event.target.closest('li')
+        const descriptionPtag = li.querySelector('p')
+        descriptionPtag.textContent = descriptionInput
+
+    }
 })
