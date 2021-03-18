@@ -131,10 +131,84 @@ newSightingForm.addEventListener('submit', function (event) {
     renderAnimalSightingPost(newSightingObject)
     newSightingForm.reset()
 
+    
 })
 
 
 /***** End of Starter Code *****/
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
 
+/***** Deliverable 1 *****/
 
+// document.querySelector('ul#animals').addEventListener('click', function(event){
+//     if (event.target.matches)
+//     console.log('Like clicked!!!', event.target)
+
+// })
+
+/***** Deliverable 2 *****/
+
+// document.querySelector('button.delete-button').addEventListener('click', function(event){
+
+//     console.log('Delete clicked!!!', event.target)
+
+// })
+
+const ulAnimals = document.querySelector('ul#animals')
+
+    // console.log(ulAnimals)
+
+ulAnimals.addEventListener('click', function(event) {
+
+    // console.log(event.target)
+    if(event.target.matches('button.like-button')) {
+        // console.log('like clicked')
+        
+        const likesPtag = event.target.previousElementSibling
+        // console.log(likesPtag)
+        const likes = parseInt(likesPtag.textContent) + 1
+        likesPtag.textContent = `${likes} Likes`
+        // console.log(likesPtag)
+    }
+    else if (event.target.matches('button.delete-button')) {
+        // console.log('delete clicked')
+        const li = event.target.parentElement
+        // console.log(li)
+        li.remove()
+    }
+
+    else if (event.target.matches('button.toggle-update-form-button')) {
+        // console.log('clicked')
+        
+        const sighting = event.target.nextElementSibling
+        if (sighting.style.display === 'block') {
+            sighting.style.display = 'none'
+        }
+        else {
+            sighting.style.display = 'block'
+        }
+
+        // +ternary op!
+        // sighting.style.display = sighting.style.display === 'block' ? 'none' : 'block'
+
+    }
+})
+
+ulAnimals.addEventListener('submit', function(event){
+
+    if(event.target.matches('form.update-form')) {
+
+        event.preventDefault()
+
+        // console.log('form submitted!')
+
+        // get user input
+        const descriptionInput = event.target[0].value 
+        // console.log(descriptionInput)
+        const li = event.target.closest('li')
+        const descriptionPtag = li.querySelector('p')
+        descriptionPtag.textContent = descriptionInput
+        // console.log(descriptionPtag)
+    }
+
+})
