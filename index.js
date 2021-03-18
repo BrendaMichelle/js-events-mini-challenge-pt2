@@ -138,3 +138,54 @@ newSightingForm.addEventListener('submit', function (event) {
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
 
 
+//**********Deliverable 1: Like an animal sighting**********
+
+const animSightings = document.querySelector('ul#animals')
+
+animSightings.addEventListener('click', function (event){
+if (event.target.matches('button.like-button')){
+    const likesDisplay = event.target.previousElementSibling
+    const animLikes = parseInt(likesDisplay.textContent) + 1
+    likesDisplay.textContent = `${animLikes} Likes`
+}
+
+//**********Deliverable 2: Delete an animal sighting**********
+
+else if (event.target.matches('button.delete-button')){
+    const animals = event.target.closest('li')
+    animals.remove()
+}
+
+//**********Deliverable 3: View the update animal sighting description form**********
+
+else if (event.target.matches('button.toggle-update-form-button')){
+    const li = event.target.closest('li')
+    const showForm = li.querySelector('form')
+
+    if(showForm.style.display === 'block'){
+        showForm.style.display = 'none'
+    }
+    else{
+        showForm.style.display = 'block'
+        }
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
