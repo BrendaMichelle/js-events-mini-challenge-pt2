@@ -37,6 +37,7 @@ There's a section in this Readme file for your notes on each deliverable. As you
 
 **YOUR NOTES**
 ```
+had a tough time focusing during today's mini challenge so relied heavily on the review to fix what i did. similar to yesterday's like deliverable, just have to get the likes of the animal sightings instead of the travelers likes  
 
 ```
 
@@ -46,6 +47,7 @@ There's a section in this Readme file for your notes on each deliverable. As you
 
 **YOUR NOTES**
 ```
+i didnt realize this could all be in the same animalCollection event listener function 
 
 ```
 

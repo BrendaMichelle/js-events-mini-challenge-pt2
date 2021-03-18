@@ -137,4 +137,50 @@ newSightingForm.addEventListener('submit', function (event) {
 /***** End of Starter Code *****/
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
 
+//Deliverable 1: When a user clicks an animal sighting's like button, that animal sighting's likes should increase by 1
+const animalCollection = document.querySelector('ul#animals')
 
+animalCollection.addEventListener('click', function(event){
+    // console.log(event.target)
+
+    if (event.target.matches('button.like-button')){
+        // event.target.className === 'like-button' another option
+        console.log(event.target)
+        const li = event.target.closest('li') //li element of animal sighting
+        const likesPtag = li.querySelector('p.likes-display') //get p tag of likes in that li element
+        const currLikes = parseInt(likesPtag.textContent)  //get likes as an integer
+        likesPtag.textContent = `${currLikes + 1} Likes` //add a like 
+    }
+//Deliverable 2: When a user clicks an animal sighting's delete button, that animal sighting should be removed from the page.
+    else if(event.target.className === 'delete-button'){ //can also use matches
+        // console.log('delete clicked!')
+        const li = event.target.closest('li')
+        li.remove()
+    }
+//Deliverable 3: When a user clicks an animal sighting's 'Toggle Update Form' button, the form associated with that animal sighting should toggle between displaying and not displaying on the page.
+    else if(event.target.matches('button.toggle-update-form-button')){
+        console.log('clicked')
+        const form = li.querySelector('form') //find the form
+        if(form.style.display === 'block'){
+            form.style.display = 'none'
+        }
+        else{
+            form.style.display = 'block'
+        }
+        //form.style.display = form.style.display === 'block' ? 'none' : 'block'
+    }
+})
+
+//Bonus: When a user submits an animal sighting's form.update-form, the <p></p> element that displays the description of that animal sighting should be updated with the new description.
+
+animalCollection.addEventListener('submit', function(event){
+    if(event.target.matches('form.update-form')){
+        event.preventDefault() 
+        const descriptionInput = event.target[0].value //get the input
+        // console.log(descriptionInput)
+        //traverse the dom to get access and update the input
+        const li = event.target.closets('li')
+        const descriptionPtag = li.querySelector('p')
+        descriptionPtag.textContent = descriptionInput
+    }
+})
