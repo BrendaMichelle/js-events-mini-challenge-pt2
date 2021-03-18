@@ -138,3 +138,31 @@ newSightingForm.addEventListener('submit', function (event) {
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
 
 
+// EVENT DELEGATION
+// Identify which elements you care to listen for an event on
+//      'clicks'
+
+// delete and likes buttons of all the posts
+// Find the closest common parent of all these elements
+//      <ul id="animals"> == $0
+
+
+//can click on 'like' 'delete' and 'toggle update form' for each animal sighting post
+const animalsUl = document.querySelector('ul#animals')
+
+animalsUl.addEventListener('click', function (event) {
+    console.log('clicked', event.target)
+
+    if (event.target.matches('button.like-button')){
+        const likesPtag = event.target.previousElementSibling
+        const likes = parseInt(likesPtag.textContent) + 1
+        likesPtag.textContent = `${likes} Likes`
+    }
+    else if (event.target.matches('button.delete-button')) {
+        const animals = event.target.closest('ul.animals')
+        animals.remove()
+    }
+    // getting error: index.js:163 Uncaught TypeError: Cannot read property 'remove' of null
+    // at HTMLUListElement.<anonymous> (index.js:163)
+    // when trying to click on 'delete' button. not sure what is wrong with the code.
+})
