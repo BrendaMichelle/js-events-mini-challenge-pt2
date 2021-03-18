@@ -136,5 +136,78 @@ newSightingForm.addEventListener('submit', function (event) {
 
 /***** End of Starter Code *****/
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
+/************************** deliverable 1 *******************************/
 
+//likes button increases likes by 1
+// 1 find the like button 
+// 2 find the closest parent element
+// 3 add event listener to that parent 
+// 4 find the likes display 
+// increment likes by 1 and then display
+
+const profileDiv = document.querySelector('div#profile')
+
+profileDiv.addEventListener('click', (e) => {
+
+    if (e.target.matches('button.like-button')) {
+        //find likes view
+        const likesPTag = e.target.previousElementSibling
+        const likes = parseInt(likesPTag.textContent) +1 
+        likesPTag.textContent = `${likes}, Likes`
+    } 
+} )
+
+/******************************** deliverable 2 *************************/
+
+// 1 locate the delete button 
+// 2 locate the closest parent element/container for all sightings 
+// 3 add event listener to the parent element 
+// 4 use matches to listen for click on delete button 
+// 5 find container for individual animalSighting
+// 6 remove the sighting 
+
+const ulAnimals = document.querySelector('ul#animals')
+
+ulAnimals.addEventListener('click', (e) => {
+    if (e.target.matches('button.delete-button')) {
+        console.log("clicked delete!!")
+        const animalSighting = e.target.closest('li')
+        animalSighting.remove()
+    }
+})
+
+
+/******************************** deliverable 3 *************************/
+
+// find parent element(container) to the toggle button 
+// add event listener to the parent element  
+// use matches to listen for click on the toggle button 
+//change the styling of form display 
+
+
+
+ulAnimals.addEventListener('click', (e) => {
+    if (e.target.matches('button.toggle-update-form-button')) {
+       const form = e.target.nextElementSibling
+       if (form.style.display == "none") {
+           form.style.display = ""
+       } else if (form.style.display == "") {
+           form.style.display = "none"
+       }
+    
+    }
+})
+
+/******************************** BONUS *************************/
+
+//find the form element associated with update    
+//add event listener on a submit event 
+//prevent the default event 
+//get the value of the submission 
+//change the innerContent of the p tag 
+ulAnimals.addEventListener('submit', (e) => {
+    e.preventDefault()
+    e.target.closest('li').querySelector('p').textContent = e.target.querySelector('input').value
+    
+})
 
