@@ -138,3 +138,67 @@ newSightingForm.addEventListener('submit', function (event) {
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
 
 
+
+// FIRST TRY //
+// const collectionUl = document.querySelector('ul#animals')
+
+// collectionUl.addEventListener('click', function (event){
+
+//     if (event.target.matches('button.like-button')){
+//         const likesPtag = event.target.previousElementSibling
+//         const likes = parseInt(likesPtag.textContent) + 1
+//         likesPtag.textContent = `${likes} Likes`
+//     }
+//     else if (event.target.matches('button.delete-button')){
+//         const animal = event.target.closest('li')
+//         animal.remove()
+//     }
+//     else if (event.target.matches('button.toggle-update-form-button')){
+//         debugger
+//         const animal = event.target.closest('#sighting-description')
+//         animal.style.display = "none"
+//     }
+// })
+
+
+// REVIEW: Different Way to Write the Code //
+
+const animalCollection = document.querySelector('ul#animals')
+
+animalCollection.addEventListener('click', function(event){
+
+    const li = event.target.closest('li')
+
+    if(event.target.matches('button.like-button')) {
+       
+        const likesPtag = li.querySelector('p.likes-display')
+        const currLikes = parseInt(likesPtag.textContent) + 1
+        likesPtag.textContent = `${currLikes} Likes`
+    }
+    else if(event.target.className === 'delete-button'){
+        const li = event.target.closest('li')
+        li.remove()
+    }
+    else if(event.target.matches('button.toggle-update-form-button')){
+        //we have to define the form
+        const form = li.querySelector('form')
+        const updateForm = event.target.nextElementSibling
+        if(form.style.display === 'block'){
+            form.style.display = 'none'
+        }
+        else {
+            form.style.display = 'block'
+        }
+        //form.style.display = form.style.display === 'block' ? 'none' : 'block'
+    }
+})
+
+animalCollection.addEventListener('submit', function (event){
+    if (event.target.matches('form.update-form')){
+        event.preventDefault()
+        const li = event.target.closest('li')
+        const descriptionInput = event.target[0].value
+        const descriptionPtag = li.querySelector('p')
+        descriptionPtag.textContent = descriptionInput
+    }
+})
