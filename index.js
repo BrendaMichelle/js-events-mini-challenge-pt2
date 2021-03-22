@@ -137,70 +137,42 @@ newSightingForm.addEventListener('submit', function (event) {
 /***** End of Starter Code *****/
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
 
-/************************ deliverable 1 ********************************/
-//find like button 
-//find parent 
-//add event listener to parent
-//match with like button
-//find the likes display
-//increment like # by one 
-//change the like display
-/************************ deliverable 2 ********************************/
-//find the delete button using dev tools elements search
-// use else if and target match the delete button
-/*target the individual animal sighting 'container' by testing it out in the console with a debugger*/
-//delete the entire container
-/************************ deliverable 3 ********************************/
-//find toggle button with dev tools search elements
-/*tag on another else if with condition of target match to toggle button use*/
-//find the form tag it is held in
-/*use debugger in the console to play around to get the style attribute from the form*/ 
-//add conditional to change the display back and forth 
-const ulAnimals = document.querySelector('ul#animals')
+const animalSightingsContainer = document.querySelector('ul#animals')
+// const likeButton = animalsSightingsContainer.querySelector('like.like-button')
 
-ulAnimals.addEventListener('click', (e) => {
+animalSightingsContainer.addEventListener('click', (e) =>{
 
-    if(e.target.matches('button.like-button')) {
+    if (e.target.matches('button.like-button')) {
+        const currLikes = e.target.previousElementSibling
+        const newNum = parseInt(currLikes.textContent) + 1
 
-        const displayLikes = e.target.previousElementSibling
-        const numLikes = parseInt(displayLikes.textContent) + 1
-        displayLikes.textContent = `${numLikes} Likes`
+        currLikes.textContent = `${newNum} Likes` 
+
     } else if(e.target.matches('button.delete-button')) {
+        
+        e.target.closest('li').remove
+        
+    } else if (e.target.matches('button.toggle-update-form-button')) {
+        
+        const li = e.target.closest('li')
+        const form = li.querySelector('form')
+        
+        
+        form.style.display = form.style.display === "none" ? "block" : "none"
 
-        //finds closest li to the delete button and removes it
-        e.target.closest('li').remove()
-    
-    } else if(e.target.matches('button.toggle-update-form-button')) {
-        const form = e.target.nextElementSibling
+        if (form.style.display === "block") {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault()
+                const newDesc = e.target[0].value
+                const curDesc = e.target.closest('li').querySelector('p')
 
-        if (form.style.display === "none") {
-            form.style.display = "block"
-        } else {
-            form.style.display = "none"
+                curDesc.textContent = newDesc
+            })
         }
         
     }
 })
 
-/************************ bonus ********************************/
-//add event listener to the main ul container that listens for submit
-//prevent the default behavior of the form
-//use matches to trigger event if submit is clicked
-//test it out in the console to make sure each seperate one is working
-/*use debugger and console.dir to traverse to find the value of the input field*/
-/*find the individual 'container' for the animalSighting by using the dev tools to select the form element and test different methods to select the wanted element from there */ 
-/*find the description display and how to traverse to the relevant description*/
-//set the inner content of that description equal to the value
-ulAnimals.addEventListener('submit', (e) => {
-    e.preventDefault()
-    if(e.target.matches('form.update-form')) {
-        
-        const value = e.target[0].value
-        const li = e.target.closest('li')
-        const pTag = li.querySelector('p').textContent = value
-
-    }
-})
 
 
 
