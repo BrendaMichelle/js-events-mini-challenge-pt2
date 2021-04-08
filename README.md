@@ -37,7 +37,11 @@ There's a section in this Readme file for your notes on each deliverable. As you
 
 **YOUR NOTES**
 ```
+Event Delegation approach:
+1 - determine best outer element to listen for clicks (chose the sightings ul)
+2 - write different methods for different event targets
 
+For adding likes, simply change the text on the page to increment by 1.
 ```
 
 ## Deliverable 2: Delete an animal sighting
@@ -46,7 +50,7 @@ There's a section in this Readme file for your notes on each deliverable. As you
 
 **YOUR NOTES**
 ```
-
+Use remove function to remove entire li item for animal sighting.
 ```
 
 ## Deliverable 3: View the update animal sighting description form
@@ -56,7 +60,7 @@ There's a section in this Readme file for your notes on each deliverable. As you
 
 **YOUR NOTES**
 ```
-
+Change CSS display value between block and "none".
 ```
 
 

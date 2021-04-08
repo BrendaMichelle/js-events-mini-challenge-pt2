@@ -137,4 +137,45 @@ newSightingForm.addEventListener('submit', function (event) {
 /***** End of Starter Code *****/
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
 
+const sightingsList = document.querySelector("ul#animals")
+
+sightingsList.addEventListener("click", event => {
+    console.log(`clickin that ${event.target}`)
+    const clickedLi = event.target.closest("li")
+
+    if (event.target.classList.contains("like-button")) {
+        const likesP = clickedLi.querySelector("p.likes-display")
+        let currentLikes = parseInt(likesP.textContent)
+        likesP.textContent = `${currentLikes+1} Likes`
+    }
+
+    if (event.target.classList.contains("delete-button")) {
+        clickedLi.remove()
+    }
+
+    if (event.target.classList.contains("toggle-update-form-button")) {
+        const updateForm = clickedLi.querySelector("form.update-form")
+        switch (updateForm.style.display) {
+            case "none":
+                updateForm.style.display = "block" // empty string would also work
+                break;
+            case "block":
+                updateForm.style.display = "none"
+                break;
+            default:
+                console.log("something has gone wrong")
+        }
+    }
+
+    // if (event.target.classList.contains("form.update-form input[type='submit']")) {
+    //     const updateButton = clickedLi.querySelector("form.update-form input[type='submit']")
+    //     updateButton.preventDefault()
+    //     console.log("did it work")
+    // }
+})
+
+// trying to use helper functions...
+
+
+
 
