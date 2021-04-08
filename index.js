@@ -30,6 +30,7 @@ function renderAnimalSightingPost(animalObject) {
     li.dataset.id = animalObject.id
 
     const p = document.createElement("p")
+    p.id = 'description'
     p.textContent = animalObject.description
 
     const img = document.createElement("img")
@@ -63,7 +64,7 @@ function renderAnimalSightingPost(animalObject) {
     const updateForm = document.createElement('form')
     updateForm.className = 'update-form'
     updateForm.innerHTML = `
-    <input type='text' value='${animalObject.description}'/>
+    <input type='text' name ="updateInput"value='${animalObject.description}'/>
     <input type="submit" value="Update description" />
     `
     updateForm.style.display = 'none'
@@ -138,3 +139,34 @@ newSightingForm.addEventListener('submit', function (event) {
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
 
 
+const animalUl = document.querySelector('#animals')
+animalUl.addEventListener('click', event =>{
+
+   if(event.target.matches('.like-button')){
+        const likePTag = event.target.previousElementSibling
+        const currentLikes = parseInt(likePTag.textContent)
+        likePTag.textContent = `${currentLikes + 1} Likes`
+
+   } else if (event.target.className === 'delete-button'){
+       const cardLi = event.target.closest('li')
+        cardLi.remove()
+
+   } else if (event.target.matches('.toggle-update-form-button')){
+        
+        const cardLi = event.target.nextElementSibling
+          if(cardLi.style.display === 'none'){
+              cardLi.style.display = 'block'
+          } else {
+              cardLi.style.display = 'none'
+          }
+     } else {
+         event.target.className === ('update-form')
+         event.preventDefault()
+         const newInput = event.target.previousElementSibling.value
+         const desPTag = document.querySelector('#description')
+         desPTag.textContent = newInput      
+
+     }
+
+
+})
