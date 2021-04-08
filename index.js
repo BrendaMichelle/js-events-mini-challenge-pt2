@@ -73,6 +73,48 @@ function renderAnimalSightingPost(animalObject) {
 
     const animalsUl = document.querySelector("#animals")
     animalsUl.append(li)
+
+    const sightingLikeButton = li.querySelector('.like-button')
+
+    sightingLikeButton.addEventListener('click', event => {
+        // console.log('like button clicked')
+        const likesPTag = li.querySelector('p.likes-display')
+        likesPTag.textContent = `${animalObject.likes +1} Likes`
+    } )
+
+    const sightingDeleteButton = li.querySelector('.delete-button')
+
+    sightingDeleteButton.addEventListener('click', event => {
+        // console.log('delete button clicked')
+        li.remove()
+    })
+
+    const sightingToggle = li.querySelector('.toggle-update-form-button')
+    const signtingForm = li.querySelector('form.update-form')
+
+    sightingToggle.addEventListener('click', event => {
+        if (signtingForm.style.display === "none") {
+            signtingForm.style.display = "block"
+        } else if (signtingForm.style.display === "block") {
+            signtingForm.style.display = "none"
+        }
+    }) 
+
+    const SightingUpdater = li.querySelector('form.update-form')
+
+    SightingUpdater.addEventListener('submit', event => {
+        event.preventDefault()
+
+        const newDescription = document.querySelector("'form.update-form'").value
+
+        const updatedSightingObject = {
+            description: description
+        }
+    
+        renderAnimalSightingPost(updatedSightingObject)
+        
+        SightingUpdater.reset()
+    })
 }
 
 traveler.animalSightings.forEach(function (animalSightingObject) {
@@ -129,12 +171,13 @@ newSightingForm.addEventListener('submit', function (event) {
     }
 
     renderAnimalSightingPost(newSightingObject)
+    
     newSightingForm.reset()
+
 
 })
 
 
 /***** End of Starter Code *****/
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
-
 
