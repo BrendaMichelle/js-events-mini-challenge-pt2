@@ -162,9 +162,14 @@ const animalSightingCollection = document.querySelector("#animals")
             (event.target.className === 'toggle-update-form-button'){
                 const displayForm = document.querySelector('#new-animal-sighting-form')
                 // console.log('update form')
+                if (displayForm.style.display === 'none'){
+                    displayForm.style.display = 'block'
+                } else {
+                    displayForm.style.display = 'none'
+                }
             
-                displayForm.style.display = 'none'
-        } else newSightingForm // not sure on how to toggle the form back
+                
+        } 
                
              
             
