@@ -26,6 +26,7 @@ likes.textContent = `${traveler.likes} Likes`
 
 /***** Deliverable 4 *****/
 function renderAnimalSightingPost(animalObject) {
+    // debugger
     const li = document.createElement("li")
     li.dataset.id = animalObject.id
 
@@ -60,6 +61,7 @@ function renderAnimalSightingPost(animalObject) {
     updateButton.type = 'button'
     updateButton.textContent = 'Toggle Update Form'
 
+    // debugger
     const updateForm = document.createElement('form')
     updateForm.className = 'update-form'
     updateForm.innerHTML = `
@@ -73,6 +75,26 @@ function renderAnimalSightingPost(animalObject) {
 
     const animalsUl = document.querySelector("#animals")
     animalsUl.append(li)
+
+    updateButton.addEventListener('click', event => {
+        // event.preventDefault()
+        console.log(updateForm)
+        if(updateForm.style.display === 'inline') {
+            updateForm.style.display = 'none'    
+        } else {
+        updateForm.style.display = 'inline'
+    }
+    })
+    
+    likeButton.addEventListener('click', () => {
+        console.log(animalObject.likes)
+        sightLikesPtag.textContent = `${++animalObject.likes} Likes`
+    })
+    
+    deleteButton.addEventListener('click', () => {
+        li.remove()
+    })
+
 }
 
 traveler.animalSightings.forEach(function (animalSightingObject) {
@@ -138,3 +160,16 @@ newSightingForm.addEventListener('submit', function (event) {
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
 
 
+/***** Bonus *****/
+
+const collectionOfAnimals = document.querySelector('ul#animals')
+
+collectionOfAnimals.addEventListener('submit', (event) => {
+    event.preventDefault()
+    console.dir(event.target)
+    const updateDesc = {
+        description : event.target.childNodes[1].value
+    }
+    // renderAnimalSightingPost(updateDesc)
+    event.target.reset()
+})
