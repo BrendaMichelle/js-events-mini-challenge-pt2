@@ -68,7 +68,6 @@ function renderAnimalSightingPost(animalObject) {
     `
     updateForm.style.display = 'none'
 
-
     li.append(p, img, a, sightLikesPtag, likeButton, deleteButton, updateButton, updateForm)
 
     const animalsUl = document.querySelector("#animals")
@@ -136,5 +135,57 @@ newSightingForm.addEventListener('submit', function (event) {
 
 /***** End of Starter Code *****/
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
+
+
+const collectionOfAnimals = document.querySelector('ul#animals')
+
+collectionOfAnimals.addEventListener('click', (event) => {
+    if (event.target.className === 'delete-button') {
+        const sightingDesc = event.target.closest("[data-id]")
+        dataId.remove()
+    }
+    else if (event.target.className === 'like-button') {
+        // console.dir(event.target)
+        const sightingDesc = event.target.closest("[data-id]")
+        const likesPTag = dataId.querySelector('p.likes-display')
+        const recentLikes = parseInt(likesPTag.textContent) 
+        
+        likesPTag.textContent = `${recentLikes + 1} Likes`
+    }
+    else if (event.target.className === 'toggle-update-form-button') {
+        // console.dir(event.target)
+        const sightingDesc = event.target.nextElementSibling 
+        if (sightingDesc.style.display === 'none') {
+            sightingDesc.style.display = 'block'
+        } 
+        else if (sightingDesc.style.display === 'block') {
+            sightingDesc.style.display = 'none'
+        }
+    }
+})
+
+// collectionOfAnimals.addEventListener('submit', (event) => {
+//     event.preventDefault()
+//     console.dir(event.target)
+//     const updateDesc = {
+//         description : event.target.childNodes[1].value
+//     }
+//     // somethingHelperFunction(updateDesc)
+//     event.target.reset()
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
