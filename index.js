@@ -136,5 +136,47 @@ newSightingForm.addEventListener('submit', function (event) {
 
 /***** End of Starter Code *****/
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
+const animalsUl = document.querySelector("#animals")
+
+animalsUl.addEventListener("click", event =>{
+    if (event.target.className === "like-button") {
+        const parentLi = event.target.closest("li")
+        const likesElement = parentLi.querySelector("p.likes-display")
+        let likesCount = parseInt(likesElement.textContent)
+        
+        likesElement.textContent = `${++likesCount} Likes`
+    
+    } else if (event.target.className === "delete-button") {
+        const parentLi = event.target.closest("li")
+        parentLi.remove()
+    
+    } else if (event.target.className === "toggle-update-form-button") {
+        const parentLi = event.target.closest("li")
+        const updateForm = parentLi.querySelector(".update-form")
+        
+        if (updateForm.style.display === "none"){
+            updateForm.style.display = "contents"
+        } else if (updateForm.style.display === "contents") {
+            updateForm.style.display = "none"
+        }
+    }
+})
+
+const allUpdateForms = document.getElementsByClassName("update-form")
+
+for (form of allUpdateForms) {
+    form.addEventListener("submit", event => {
+        event.preventDefault()
+        console.log(event.target[0])
+        const parentLi = event.target.closest("li")
+        
+        let description = parentLi.querySelector("p")
+        description.textContent = event.target[0].value
+        event.target.style.display = "none" 
+    })   
+}
+
+
+
 
 
