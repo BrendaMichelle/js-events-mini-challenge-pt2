@@ -176,7 +176,7 @@ sightingsList.addEventListener("click", event => {
 sightingsList.addEventListener("submit", (event)=> {
     event.preventDefault()
 
-    const clickedLi = event.target.closest("li")
+    const clickedLi = event.target.closest("li") //not sure if I keep having to do this, but it helps me to have options!
     const updateForm = event.target.closest("form.update-form")
     const newDesc = updateForm.desc.value
 
