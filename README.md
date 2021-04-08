@@ -79,3 +79,4 @@ Some things to keep in mind:
 
 ```
 
+document.querySelector("#animals > li:nth-child(3) > form")

@@ -138,3 +138,29 @@ newSightingForm.addEventListener('submit', function (event) {
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
 
 
+
+const animalsUl = document.querySelector("ul#animals")
+
+animalsUl.addEventListener('click', event => {
+    // console.log(event.target)
+    if (event.target.matches('.delete-button')){
+        const parentLi = event.target.closest('li')
+        parentLi.remove()
+    }
+    else if (event.target.matches('.like-button')){
+        const likesPTag = event.target.previousElementSibling
+        const totalLikes = parseInt(likesPTag.textContent)
+        likesPTag.textContent = `${totalLikes +1} Likes`
+    }
+
+    else if (event.target.matches('.toggle-update-form-button')){
+        const updateForm = event.target.nextElementSibling
+        if (updateForm.style.display === "none") {
+            updateForm.style.display = "block"
+        } else {
+            updateForm.style.display = "none"
+        }
+    }
+})
+
+
