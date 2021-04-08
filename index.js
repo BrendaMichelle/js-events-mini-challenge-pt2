@@ -136,5 +136,38 @@ newSightingForm.addEventListener('submit', function (event) {
 
 /***** End of Starter Code *****/
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
+const animalsUl = document.querySelector("#animals")
+animalsUl.addEventListener("click", e => {
 
+    if (event.target.className === "like-button"){
+        const likeDisplay = event.target.previousElementSibling
+        let likes = parseInt(likeDisplay.textContent)
+        likeDisplay.textContent = `${++likes} Likes`
+        // console.log(likeDisplay)
+    }
 
+    else if (event.target.className === "delete-button"){
+        const parentLi = event.target.closest("li")
+        parentLi.remove()
+    }
+
+    else if (event.target.className === "toggle-update-form-button"){
+        const updateForm = event.target.nextElementSibling
+        
+        if (updateForm.style.display === "none"){
+            updateForm.style.display = "inline"
+            // console.log("you just got clicked",updateForm)
+        }
+        else {
+            updateForm.style.display = "none"
+        }
+    }
+})
+
+const updateDescript = document.querySelector(".update-form")
+
+updateDescript.addEventListener("submit", e =>{
+    event.preventDefault()
+    
+
+})
