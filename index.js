@@ -136,5 +136,51 @@ newSightingForm.addEventListener('submit', function (event) {
 
 /***** End of Starter Code *****/
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
+/***** Deliverables 1, 2 & 3 *****/
+const sightingsList = document.querySelector("ul#animals")
 
+sightingsList.addEventListener("click", event => {
+    console.log(`clickin that ${event.target}`)
+    const clickedLi = event.target.closest("li")
+
+    if (event.target.classList.contains("like-button")) {
+        const likesP = clickedLi.querySelector("p.likes-display")
+        let currentLikes = parseInt(likesP.textContent)
+        likesP.textContent = `${currentLikes+1} Likes`
+    }
+
+    if (event.target.classList.contains("delete-button")) {
+        clickedLi.remove()
+    }
+
+    if (event.target.classList.contains("toggle-update-form-button")) {
+        const updateForm = clickedLi.querySelector("form.update-form")
+        switch (updateForm.style.display) {
+            case "none":
+                updateForm.style.display = "block" // empty string would also work
+                // added name attribute here to use later
+                updateForm.querySelector("[type='text']").setAttribute("name","desc")
+                break;
+            case "block":
+                updateForm.style.display = "none"
+                break;
+            default:
+                console.log("something has gone wrong")
+        }
+    }
+
+})
+
+
+
+sightingsList.addEventListener("submit", (event)=> {
+    event.preventDefault()
+
+    const clickedLi = event.target.closest("li") //not sure if I keep having to do this, but it helps me to have options!
+    const updateForm = event.target.closest("form.update-form")
+    const newDesc = updateForm.desc.value
+
+    const descP = clickedLi.querySelector("p")
+    descP.textContent = newDesc
+})
 
