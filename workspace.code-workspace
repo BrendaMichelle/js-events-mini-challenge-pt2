@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../js-dom-mini-challenge"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Mini-Challenge",
+		"liveServer.settings.port": 5506
+	}
+}
