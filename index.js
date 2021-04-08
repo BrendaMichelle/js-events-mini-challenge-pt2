@@ -137,4 +137,29 @@ newSightingForm.addEventListener('submit', function (event) {
 /***** End of Starter Code *****/
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
 
+const animalSightingCollection = document.querySelector("#animals")
+    animalSightingCollection.addEventListener('click', event => {
+        console.log(event.target)
+        if(event.target.className === 'like-button'){
+            console.log('like button clicked!')
+            const animalLikesPTag = event.target.previousElementSibling
+            let otherLikes = parseInt(animalLikesPTag.textContent)
+            animalLikesPTag.textContent = `${++otherLikes} Likes`
 
+        } else if
+            (event.target.className === 'delete-button'){
+                const sightingsCard = event.target.closest('li')
+                sightingsCard.remove()
+
+        } else if
+        (event.target.className === 'toggle-update-form-button'){
+            const displayForm = document.querySelector('#new-animal-sighting-form')
+            // console.log('update form')
+            if (displayForm.style.display === 'none'){
+                displayForm.style.display = 'block'
+            } else {
+                displayForm.style.display = 'none'
+            }
+        }
+
+    })
