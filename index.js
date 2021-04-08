@@ -154,7 +154,7 @@ animalsUl.addEventListener('click', event => {
     }
 
     else if (event.target.matches('.toggle-update-form-button')){
-        const updateForm = document.querySelector('.update-form')
+        const updateForm = event.target.nextElementSibling
         if (updateForm.style.display === "none") {
             updateForm.style.display = "block"
         } else {
