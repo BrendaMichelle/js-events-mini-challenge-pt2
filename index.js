@@ -24,6 +24,9 @@ const likes = document.querySelector("#profile .likes")
 likes.textContent = `${traveler.likes} Likes`
 
 
+
+
+
 /***** Deliverable 4 *****/
 function renderAnimalSightingPost(animalObject) {
     const li = document.createElement("li")
@@ -50,10 +53,16 @@ function renderAnimalSightingPost(animalObject) {
     likeButton.type = 'button'
     likeButton.textContent = 'Like'
 
+    likeButton.addEventListener('click', liked(event)) // add a listener when the button is created
+
+
     const deleteButton = document.createElement('button')
     deleteButton.classList.add('delete-button')
     deleteButton.type = 'button'
     deleteButton.textContent = 'Delete'
+    deleteButton.dataset.id = animalObject.id
+
+    deleteButton.addEventListener('click', deleteIt(event)) // add a listener when the button is created
     
     const updateButton = document.createElement('button')
     updateButton.classList.add('toggle-update-form-button')
@@ -65,8 +74,11 @@ function renderAnimalSightingPost(animalObject) {
     updateForm.innerHTML = `
     <input type='text' value='${animalObject.description}'/>
     <input type="submit" value="Update description" />
+    
+    
     `
     updateForm.style.display = 'none'
+    updateButton.addEventListener('click', toggleUpdateForm(event)) // add a listener when the button is created
 
 
     li.append(p, img, a, sightLikesPtag, likeButton, deleteButton, updateButton, updateForm)
@@ -94,17 +106,38 @@ function toggleColor(element) {
     }
 }
 
+// Event Handler Functions
+
+function liked(event)
+{
+
+    likes.textContent = `${parseInt(likes.textContent, 10) + 1}`
+}
+
+function deleteIt(event)
+{
+    document.querySelector("[data-id = '${event.target.id}']").remove()
+}
+
+function toggleUpdateForm(event)
+{
+    let updateForm = document.querySelector(".update-form")
+    updateForm.style.display = (updateForm.style.display == "block") ? "none" : "block"
+}
+
+
+
 header.addEventListener('click', function (event) {
     toggleColor(event.target)
 })
 
 /***** Deliverable 2 *****/
 const button = document.querySelector('button.like-button')
-
+/*
 button.addEventListener('click', function () {
     likes.textContent = `${traveler.likes++} Likes`
 })
-
+*/
 
 /***** Deliverable 3 *****/
 const newSightingForm = document.querySelector('form#new-animal-sighting-form')
