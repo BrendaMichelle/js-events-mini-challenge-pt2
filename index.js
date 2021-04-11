@@ -174,4 +174,3 @@ const animalSightingCollection = document.querySelector('#animals')
         //     displayform.style.display
         //     //toggle display
         // }
-
