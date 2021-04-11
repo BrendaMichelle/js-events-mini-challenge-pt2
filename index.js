@@ -165,12 +165,3 @@ const animalSightingCollection = document.querySelector('#animals')
         }
     })
         
-//if form present -> set displayform style style='display: none;', else if form not present 
-
-        // style='display: none;'
-
-        // (event.target.className === 'toggle-update-form-button'){
-        //     const displayform = event.target.matches('#new-animal-sighting-form')
-        //     displayform.style.display
-        //     //toggle display
-        // }
