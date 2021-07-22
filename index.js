@@ -138,3 +138,46 @@ newSightingForm.addEventListener('submit', function (event) {
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
 
 
+const sightingsUl = document.querySelector('ul#animals')
+
+sightingsUl.addEventListener('click', (evnt) => {
+    let sightingBox = evnt.target.closest('li')
+    if (evnt.target.matches('button.like-button')) {
+        
+        let likesNumP = sightingBox.querySelector('p.likes-display')
+        let currLikes = parseInt(likesNumP.textContent)
+        currLikes++
+        likesNumP.textContent = `${currLikes} Likes`
+    }
+    else if (evnt.target.matches('button.delete-button')) {
+        sightingBox.remove()
+    }
+    else if (evnt.target.matches('button.toggle-update-form-button')) {
+        let updateForm = sightingBox.querySelector('form.update-form')
+
+        if (updateForm.style.display === 'block') {
+            updateForm.style.display = 'none'
+        }
+        else {
+            updateForm.style.display = 'block'
+        }
+    }
+
+
+})
+
+// epic bonus 
+
+sightingsUl.addEventListener('submit', (evnt) => {
+    evnt.preventDefault()
+
+
+    let sightingBox = evnt.target.closest('li')
+
+    const descIn = evnt.target[0].value
+
+    let currDesc = sightingBox.querySelector("p")
+
+    currDesc.textContent = descIn
+
+})
