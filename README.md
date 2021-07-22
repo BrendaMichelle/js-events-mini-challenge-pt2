@@ -37,7 +37,7 @@ There's a section in this Readme file for your notes on each deliverable. As you
 
 **YOUR NOTES**
 ```
-
+Using the nested approach. Added an event listener inside the renderAnimalSightingPost method. Used the predefined likeButton reference to the like button inside the function. The event listener increases the like count of the given object and also updates the displayed number of likes.
 ```
 
 ## Deliverable 2: Delete an animal sighting
@@ -46,7 +46,7 @@ There's a section in this Readme file for your notes on each deliverable. As you
 
 **YOUR NOTES**
 ```
-
+Using the nested approach as well. Added an event listener inside the renderAnimalSightingPost function. Also used the predefined deleteButton reference to the delete button, which already exists inside the function. The event listener removes a list element which is referenced by the variable "li" (which includes animal sighting to be deleted).
 ```
 
 ## Deliverable 3: View the update animal sighting description form
@@ -56,7 +56,7 @@ There's a section in this Readme file for your notes on each deliverable. As you
 
 **YOUR NOTES**
 ```
-
+Added a nested event listener to the updateButton and checked for the updateForm.style.display's status (i.e. whether it is "none" or "block") through a conditional and changed it accordingly. The display switches from none to block or vice versa depending on its status when the updateButton is clicked.
 ```
 
 
@@ -76,6 +76,6 @@ Some things to keep in mind:
 
 **YOUR NOTES**
 ```
-
+Added a nested 'submit' event listener for updateForm. Retrieved the values inputted to the form and assigned them to the description attribute of the animal sighting being updated and also changed the displayed description to the updated description. Called the preventDefault() method on the event at the start in order to prevent the default behavior of a form submitting. Didn't reset the form with updateForm.reset() because that wouldn't allow users to find what they last updated when reupdating. Without the reset, whenever they click on the update toggle button, their most recently updated description is already pre-filled in the text field. Also set the display of the update form to "none" when updating because it makes sense to not show the update form once the users submit the form. If they want to reupdate, they can just click on the toggle update button again and open the form.
 ```
 

@@ -50,15 +50,24 @@ function renderAnimalSightingPost(animalObject) {
     likeButton.type = 'button'
     likeButton.textContent = 'Like'
 
+    likeButton.addEventListener('click', function(){
+        animalObject.likes = animalObject.likes + 1
+        sightLikesPtag.textContent = `${animalObject.likes} Likes`
+    })
+
     const deleteButton = document.createElement('button')
     deleteButton.classList.add('delete-button')
     deleteButton.type = 'button'
     deleteButton.textContent = 'Delete'
+
+    
     
     const updateButton = document.createElement('button')
     updateButton.classList.add('toggle-update-form-button')
     updateButton.type = 'button'
     updateButton.textContent = 'Toggle Update Form'
+
+
 
     const updateForm = document.createElement('form')
     updateForm.className = 'update-form'
@@ -73,6 +82,30 @@ function renderAnimalSightingPost(animalObject) {
 
     const animalsUl = document.querySelector("#animals")
     animalsUl.append(li)
+
+    deleteButton.addEventListener('click', function(){
+        li.remove()
+    })
+
+    updateButton.addEventListener('click', function(){
+        if (updateForm.style.display === "none"){
+            updateForm.style.display = "block"
+        } else {
+            updateForm.style.display = "none"
+        }
+    })
+
+    updateForm.addEventListener('submit', function(event){
+        event.preventDefault()
+
+        const description = event.target[0].value
+        animalObject.description = description
+        p.textContent = animalObject.description
+
+        updateForm.style.display = "none"
+    })
+
+
 }
 
 traveler.animalSightings.forEach(function (animalSightingObject) {
@@ -137,4 +170,14 @@ newSightingForm.addEventListener('submit', function (event) {
 /***** End of Starter Code *****/
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
 
+// Like an animal sighting
+
+
+// Delete an animal sighting
+
+
+// View the update animal description form
+
+
+// Update animal sighting description
 
