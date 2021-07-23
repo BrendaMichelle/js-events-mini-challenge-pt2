@@ -37,7 +37,7 @@ There's a section in this Readme file for your notes on each deliverable. As you
 
 **YOUR NOTES**
 ```
-
+use event delegation find common parent and add event listen and logic
 ```
 
 ## Deliverable 2: Delete an animal sighting
@@ -46,7 +46,7 @@ There's a section in this Readme file for your notes on each deliverable. As you
 
 **YOUR NOTES**
 ```
-
+remove closest li
 ```
 
 ## Deliverable 3: View the update animal sighting description form
@@ -56,7 +56,7 @@ There's a section in this Readme file for your notes on each deliverable. As you
 
 **YOUR NOTES**
 ```
-
+switch to show using block and hide if shown
 ```
 
 
@@ -76,6 +76,6 @@ Some things to keep in mind:
 
 **YOUR NOTES**
 ```
-
+get input value and replace it with the current value
 ```
 
