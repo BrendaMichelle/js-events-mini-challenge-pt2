@@ -30,6 +30,7 @@ function renderAnimalSightingPost(animalObject) {
     li.dataset.id = animalObject.id
 
     const p = document.createElement("p")
+    p.classList.add('description')
     p.textContent = animalObject.description
 
     const img = document.createElement("img")
@@ -63,7 +64,7 @@ function renderAnimalSightingPost(animalObject) {
     const updateForm = document.createElement('form')
     updateForm.className = 'update-form'
     updateForm.innerHTML = `
-    <input type='text' value='${animalObject.description}'/>
+    <input type='text' name='description' value='${animalObject.description}'/>
     <input type="submit" value="Update description" />
     `
     updateForm.style.display = 'none'
@@ -138,3 +139,56 @@ newSightingForm.addEventListener('submit', function (event) {
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
 
 
+const animalsUl = document.querySelector('ul#animals')
+
+animalsUl.addEventListener('click', function(event){
+    /***** Deliverable 1 *****/
+    if (event.target.matches('button.like-button')){
+        console.log("like button clicked!")
+
+        let animalPost = event.target.closest('li')
+        let likesNumP = animalPost.querySelector('p.likes-display')
+        const currLikes = parseInt(likesNumP.innerText.split(' ')[0])
+        const newLikes = currLikes + 1
+        likesNumP.textContent = `${newLikes} Likes`
+
+    }
+
+    /***** Deliverable 2 *****/
+    if (event.target.matches('button.delete-button')){
+        console.log("delete button clicked!")
+
+        let animalPost = event.target.closest('li')
+        animalPost.remove()
+    }
+
+    /***** Deliverable 3 *****/
+    if (event.target.matches('button.toggle-update-form-button')){
+        console.log("toggle form button clicked")
+
+        let animalPost = event.target.closest('li')
+        const updateForm = animalPost.querySelector('form.update-form')
+        updateForm.style.display = 'block'
+
+        
+        // update description
+
+        updateForm.addEventListener('submit', event => {
+            event.preventDefault()
+
+            const desc = updateForm.description.value
+
+            // update description
+            descriptionP = animalPost.querySelector('p.description')
+            descriptionP.innerHTML = desc 
+
+        })
+
+    }
+
+  
+})
+
+// button.addEventListener('click', function () {
+//     likes.textContent = `${traveler.likes++} Likes`
+// })

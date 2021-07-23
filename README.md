@@ -37,7 +37,7 @@ There's a section in this Readme file for your notes on each deliverable. As you
 
 **YOUR NOTES**
 ```
-
+lecture 24 was a useful aid for solving this
 ```
 
 ## Deliverable 2: Delete an animal sighting
@@ -46,7 +46,7 @@ There's a section in this Readme file for your notes on each deliverable. As you
 
 **YOUR NOTES**
 ```
-
+ditto
 ```
 
 ## Deliverable 3: View the update animal sighting description form
