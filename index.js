@@ -54,7 +54,7 @@ function renderAnimalSightingPost(animalObject) {
     deleteButton.classList.add('delete-button')
     deleteButton.type = 'button'
     deleteButton.textContent = 'Delete'
-    
+
     const updateButton = document.createElement('button')
     updateButton.classList.add('toggle-update-form-button')
     updateButton.type = 'button'
@@ -137,4 +137,42 @@ newSightingForm.addEventListener('submit', function (event) {
 /***** End of Starter Code *****/
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
 
+//Deliverable 1, 2, & 3
 
+function processClick(event) {
+    console.log(event)
+    if (event.target.matches(".like-button")) {
+        let entry = event.target.closest("li")
+        let likeDisplay = entry.querySelector(".likes-display")
+        let numLikes = parseInt(likeDisplay.textContent.split(" ")[0])
+        likeDisplay.textContent = (numLikes + 1).toString() + " Likes"
+    } else if (event.target.matches(".delete-button")) {
+        let entry = event.target.closest("li")
+        entry.remove()
+    } else if (event.target.matches(".toggle-update-form-button")) {
+        let entry = event.target.closest("li")
+        
+        /*if (entry.children[0].style.display != "none") {
+            [... entry.children].forEach(function (element) {
+                element.style.display = "none"
+            })
+            
+        }else{
+            [...entry.children].forEach(function (element) {
+                element.style.display = "block"
+            })
+        }*/
+
+        let updateForm= entry.querySelector("form.update-form")
+        updateForm.style.display= updateForm.style.display=='none' ? 'block' : 'none'
+    }
+}
+
+document.addEventListener("click", processClick)
+document.addEventListener("submit", (event)=>{
+    event.preventDefault()
+    let form=event.target
+    let newDescription=form.querySelector('input').value
+    let entry = event.target.closest("li")
+    entry.querySelector('p').textContent=newDescription
+})
