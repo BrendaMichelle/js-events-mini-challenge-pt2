@@ -54,7 +54,7 @@ function renderAnimalSightingPost(animalObject) {
     deleteButton.classList.add('delete-button')
     deleteButton.type = 'button'
     deleteButton.textContent = 'Delete'
-    
+
     const updateButton = document.createElement('button')
     updateButton.classList.add('toggle-update-form-button')
     updateButton.type = 'button'
@@ -137,4 +137,23 @@ newSightingForm.addEventListener('submit', function (event) {
 /***** End of Starter Code *****/
 /************************** EVENTS PART 2 JS MINI CHALLENGE ******************************/
 
+const posts = document.querySelector('ul#animals')
 
+posts.addEventListener('click', function (e) {
+    const sighting = e.target.closest('li')
+    if (e.target.matches('button.link-button')) {
+        const likes = sighting.querySelector('p.likes-display')
+        let likesNum = parseInt(likes.textContent)
+        likesNum++
+        likesNum.textContent = `${likesNum} Likes`
+    } else if (e.target.matches('button.delete-button')) {
+        sighting.remove()
+    } else if (e.target.matches('button.toggle-update-form-button')) {
+        let updateForm = sighting.querySelector('form.update-form')
+        if (updateForm.style.display === 'block') {
+            updateForm.style.display = 'none'
+        } else {
+            updateForm.style.display = 'block'
+        }
+    }
+})
