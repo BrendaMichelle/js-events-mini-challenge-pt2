@@ -37,6 +37,14 @@ There's a section in this Readme file for your notes on each deliverable. As you
 
 **YOUR NOTES**
 ```
+const animalsList = document.getElementById('animals');
+animalsList.addEventListener('click', (event) => {
+    if( event.target.matches('.like-button')) {
+        let count = event.target.parentElement.querySelector('.likes-display');
+        const newLikeCount = parseInt(count.innerText.replace(' Likes','')) + 1;
+        count.textContent = `${newLikeCount} Likes`
+    }
+});
 
 ```
 
@@ -46,7 +54,9 @@ There's a section in this Readme file for your notes on each deliverable. As you
 
 **YOUR NOTES**
 ```
-
+   else if (event.target.matches('.delete-button')) {
+        event.target.parentElement.remove();
+    }
 ```
 
 ## Deliverable 3: View the update animal sighting description form
@@ -56,7 +66,10 @@ There's a section in this Readme file for your notes on each deliverable. As you
 
 **YOUR NOTES**
 ```
-
+    else if (event.target.matches('.toggle-update-form-button')) {
+        let form = event.target.parentElement.querySelector('.update-form');
+        form.style.display =  form.style.display == 'none' ? 'block'  : 'none';
+    }
 ```
 
 
@@ -76,6 +89,10 @@ Some things to keep in mind:
 
 **YOUR NOTES**
 ```
-
+animalsList.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const newDes = event.target.description.value;
+    event.target.parentElement.querySelector('p').textContent = newDes;
+});
 ```
 

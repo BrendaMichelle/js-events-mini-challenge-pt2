@@ -2,6 +2,27 @@
 const header = document.querySelector("#header")
 // console.log("Here's your header:", header)
 
+const animalsList = document.getElementById('animals');
+animalsList.addEventListener('click', (event) => {
+    if( event.target.matches('.like-button')) {
+        let count = event.target.parentElement.querySelector('.likes-display');
+        const newLikeCount = parseInt(count.innerText.replace(' Likes','')) + 1;
+        count.textContent = `${newLikeCount} Likes`
+    }
+    else if (event.target.matches('.delete-button')) {
+        event.target.parentElement.remove();
+    }
+    else if (event.target.matches('.toggle-update-form-button')) {
+        let form = event.target.parentElement.querySelector('.update-form');
+        form.style.display =  form.style.display == 'none' ? 'block'  : 'none';
+    }
+}); 
+
+animalsList.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const newDes = event.target.description.value;
+    event.target.parentElement.querySelector('p').textContent = newDes;
+});
 
 /***** Deliverable 2 *****/
 header.style.color = "green"
